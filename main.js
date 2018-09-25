@@ -3,11 +3,13 @@ var numbers = document.querySelectorAll('.nums');
 var operators = document.querySelectorAll('.operators');
 var clear = document.querySelector('.clear');
 var equals = document.querySelector('.equals');
-var operator, result, history;
+var operator, result, eval;
 var value = '';
 var num1 = 0;
 var num2 = 0;
-var formula;
+
+var output = [];
+var opArr = [];
 
 function operate(operator, num1, num2){
     if (operator === "+"){
@@ -35,35 +37,46 @@ numbers.forEach((num) => {
 
 operators.forEach((op) => {
     op.addEventListener('click', (e) => {
-        if (num1 !== 0 && num2 !== 0){
-            history = operate(operator, num1, num2);
-            num1 = history;
-            num2 = 0;
-        }
-        
-        if (num1 === 0) {
-            num1 = +value;
-        } else {
-            num2 = +value;
-        }
+        output.push(Number(value));
         operator = e.target.textContent
+        opArr.push(operator);
         value = '';
-        
-        console.log(num1)
-        console.log(num2)
     })
 })
 
-equals.addEventListener('click', () => {
-    if (num1 === 0) {
-        num1 = +value;
+
+equals.addEventListener('click', runCalc);
+
+function runCalc() {
+    output.push(Number(value));
+    
+    if (output.length > 2){
+        operator = opArr.shift();
+        num1 = output[0];
+        num2 = output[1];
+        result = operate(operator, num1, num2);
+        for (var i = 1; i <= output.length - 2; i++){
+            console.log(result)
+            num1 = result;
+            num2 = output[i + 1];
+            operator = opArr.shift();
+            console.log(num1)
+            console.log(num2)
+            console.log(i)
+            result = operate(operator, num1, num2);
+        }
     } else {
-        num2 = +value;
+        operator = opArr.shift();
+        num1 = output[0];
+        num2 = output[1];
+        result = operate(operator, num1, num2);
+        console.log(result)
     }
-    result = operate(operator, num1, num2);
+      
+    
+    
     display.textContent = result;
-    console.log(result)
-})
+}
 
 clear.addEventListener('click', () => {
     display.textContent = '';
