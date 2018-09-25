@@ -39,6 +39,7 @@ operators.forEach((op) => {
     op.addEventListener('click', (e) => {
         output.push(Number(value));
         operator = e.target.textContent
+        output.push(operator);
         opArr.push(operator);
         value = '';
     })
@@ -47,32 +48,30 @@ operators.forEach((op) => {
 
 equals.addEventListener('click', runCalc);
 
+function calc(op) {
+        operator = output[output.indexOf(op)];
+        console.log(output.indexOf(op))
+        num1 = output[output.indexOf(op) - 1];
+        num2 = output[output.indexOf(op) + 1];
+        result = operate(operator, num1, num2);
+        output.splice(output.indexOf(op) - 1, 3, result);
+}
+
 function runCalc() {
     output.push(Number(value));
-    
-    if (output.length > 2){
-        operator = opArr.shift();
-        num1 = output[0];
-        num2 = output[1];
-        result = operate(operator, num1, num2);
-        for (var i = 1; i <= output.length - 2; i++){
-            console.log(result)
-            num1 = result;
-            num2 = output[i + 1];
-            operator = opArr.shift();
-            console.log(num1)
-            console.log(num2)
-            console.log(i)
-            result = operate(operator, num1, num2);
-        }
-    } else {
-        operator = opArr.shift();
-        num1 = output[0];
-        num2 = output[1];
-        result = operate(operator, num1, num2);
-        console.log(result)
+    console.log(output)
+  
+  for (var i = 1; i <= opArr.length; i++){
+    if (output.includes('*')) {
+        calc('*');
+    } else if (output.includes('/')){
+        calc('/');
+    } else if (output.includes('+')){
+        calc('+');
+    } else if (output.includes('-')){
+        calc('-');
     }
-      
+  }
     
     
     display.textContent = result;
@@ -84,5 +83,7 @@ clear.addEventListener('click', () => {
     result = 0;
     num1 = 0;
     num2 = 0;
+    output = [];
+    opArr = [];
     
 })
