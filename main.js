@@ -73,8 +73,7 @@ function runCalc() {
     }
   }
     
-    
-    display.textContent = result;
+   display.textContent = result
 }
 
 clear.addEventListener('click', () => {
