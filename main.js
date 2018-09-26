@@ -3,6 +3,8 @@ var numbers = document.querySelectorAll('.nums');
 var operators = document.querySelectorAll('.operators');
 var clear = document.querySelector('.clear');
 var equals = document.querySelector('.equals');
+var decimal = document.querySelector('.decimal');
+var backspace = document.querySelector('.backspace');
 var operator, result, eval;
 var value = '';
 var num1 = 0;
@@ -10,7 +12,7 @@ var num2 = 0;
 
 var output = [];
 var opArr = [];
-
+console.log(12 % 5);
 function operate(operator, num1, num2){
     if (operator === "+"){
         return num1 + num2;
@@ -24,6 +26,8 @@ function operate(operator, num1, num2){
         } else {
             return num1 / num2;
         }
+    } else if (operator === '%'){
+        return num1 % num2;
     }
 }
 
@@ -31,8 +35,20 @@ numbers.forEach((num) => {
     num.addEventListener('click', (e) => {
             value += e.target.textContent;
             display.textContent = value;
+            console.log(value)
          
     })
+})
+
+decimal.addEventListener('click', (e) => {
+    if (!value.includes('.')){
+      value += e.target.textContent;
+      display.textContent = value;
+      console.log(value)
+    } else if (value.includes('.')){
+        value = value;
+    }
+    
 })
 
 operators.forEach((op) => {
@@ -66,6 +82,8 @@ function runCalc() {
         calc('*');
     } else if (output.includes('/')){
         calc('/');
+    } else if (output.includes('%')){
+        calc('%')
     } else if (output.includes('+')){
         calc('+');
     } else if (output.includes('-')){
@@ -73,8 +91,17 @@ function runCalc() {
     }
   }
     
-   display.textContent = result
+   display.textContent = result;
 }
+
+backspace.addEventListener('click', () => {
+    var backArr = value.split('')
+    console.log(backArr)
+    backArr.pop();
+    value = backArr.join('');
+    display.textContent = value;
+})
+
 
 clear.addEventListener('click', () => {
     display.textContent = '';

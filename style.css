@@ -68,3 +68,15 @@ h1 {
     border-radius: 5px;
     
 }
+
+.backspace {
+    float: left;
+    font-size: 20px;
+    width: 90px;
+    height: 75px;
+    margin: 2px;
+    margin-left: 6px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    
+}
