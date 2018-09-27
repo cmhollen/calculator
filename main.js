@@ -32,34 +32,39 @@ function operate(operator, num1, num2){
 }
 
 numbers.forEach((num) => {
-    num.addEventListener('click', (e) => {
-            value += e.target.textContent;
-            display.textContent = value;
-            console.log(value)
-         
-    })
+    num.addEventListener('click', numberAct)
 })
 
-decimal.addEventListener('click', (e) => {
+function numberAct(e) {
+    value += e.target.textContent;
+    display.textContent = value;
+    console.log(value)
+}
+
+decimal.addEventListener('click', decAct)
+
+
+function decAct(e){
     if (!value.includes('.')){
-      value += e.target.textContent;
-      display.textContent = value;
-      console.log(value)
-    } else if (value.includes('.')){
-        value = value;
-    }
-    
-})
+        value += e.target.textContent;
+        display.textContent = value;
+        console.log(value)
+      } else if (value.includes('.')){
+          value = value;
+      }
+}
 
 operators.forEach((op) => {
-    op.addEventListener('click', (e) => {
-        output.push(Number(value));
-        operator = e.target.textContent
-        output.push(operator);
-        opArr.push(operator);
-        value = '';
-    })
+    op.addEventListener('click', opAct)
 })
+
+function opAct(e){
+    output.push(Number(value));
+    operator = e.target.textContent
+    output.push(operator);
+    opArr.push(operator);
+    value = '';
+}
 
 
 equals.addEventListener('click', runCalc);
@@ -94,16 +99,19 @@ function runCalc() {
    display.textContent = result;
 }
 
-backspace.addEventListener('click', () => {
+backspace.addEventListener('click', backAct)
+
+function backAct(){
     var backArr = value.split('')
     console.log(backArr)
     backArr.pop();
     value = backArr.join('');
     display.textContent = value;
-})
+}
 
+clear.addEventListener('click', clearAct)
 
-clear.addEventListener('click', () => {
+function clearAct(){
     display.textContent = '';
     value = '';
     result = 0;
@@ -111,5 +119,4 @@ clear.addEventListener('click', () => {
     num2 = 0;
     output = [];
     opArr = [];
-    
-})
+}
