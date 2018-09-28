@@ -1,10 +1,10 @@
 body {
-   background-color: rgb(157, 186, 229)
+   background-color: rgb(225, 197, 248)
 }
 
 h1 {
     text-align: center;
-    color: rgb(32, 32, 136);
+    color: rgb(86, 32, 136);
 }
 
 .container {
@@ -65,6 +65,7 @@ h1 {
 
 .clear:active {
     transform: translateY(1px);
+    background-color: white;
 }
 
 .backspace {
@@ -83,6 +84,7 @@ h1 {
 
 .backspace:active {
     transform: translateY(1px);
+    background-color: white;
 }
 
 
@@ -101,6 +103,7 @@ h1 {
 
 #remainder:active {
     transform: translateY(1px);
+    background-color: white;
 }
 
 #divide {
@@ -119,7 +122,10 @@ h1 {
 
 #divide:active {
     transform: translateY(1px);
+    background-color: white;
+    color: rgb(224, 149, 36);
 }
+
 
 #seven {
     font-size: 30px;
@@ -137,6 +143,7 @@ h1 {
 
 #seven:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #eight {
@@ -155,6 +162,7 @@ h1 {
 
 #eight:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #nine {
@@ -173,6 +181,7 @@ h1 {
 
 #nine:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #multiply {
@@ -191,6 +200,8 @@ h1 {
 
 #multiply:active {
     transform: translateY(1px);
+    background-color: white;
+    color: rgb(224, 149, 36);
 }
 
 #four {
@@ -209,6 +220,7 @@ h1 {
 
 #four:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #five {
@@ -227,6 +239,7 @@ h1 {
 
 #five:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #six {
@@ -245,6 +258,7 @@ h1 {
 
 #six:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #minus {
@@ -263,6 +277,8 @@ h1 {
 
 #minus:active {
     transform: translateY(1px);
+    background-color: white;
+    color: rgb(224, 149, 36);
 }
 
 #one {
@@ -281,6 +297,7 @@ h1 {
 
 #one:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #two {
@@ -299,6 +316,7 @@ h1 {
 
 #two:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #three {
@@ -317,6 +335,7 @@ h1 {
 
 #three:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 #add {
@@ -335,6 +354,8 @@ h1 {
 
 #add:active {
     transform: translateY(1px);
+    background-color: white;
+    color: rgb(224, 149, 36);
 }
 
 #zero {
@@ -354,6 +375,7 @@ h1 {
 
 #zero:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 .decimal {
@@ -372,6 +394,7 @@ h1 {
 
 .decimal:active {
     transform: translateY(1px);
+    background-color: rgb(194, 190, 190);
 }
 
 .equals {
@@ -390,5 +413,7 @@ h1 {
 
 .equals:active {
     transform: translateY(1px);
+    background-color: white;
+    color: rgb(224, 149, 36);
 }
 

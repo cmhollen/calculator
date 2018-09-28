@@ -10,9 +10,10 @@ var value = '';
 var num1 = 0;
 var num2 = 0;
 
+
 var output = [];
 var opArr = [];
-console.log(12 % 5);
+
 function operate(operator, num1, num2){
     if (operator === "+"){
         return num1 + num2;
@@ -38,7 +39,6 @@ numbers.forEach((num) => {
 function numberAct(e) {
     value += e.target.textContent;
     display.textContent = value;
-    console.log(value)
 }
 
 decimal.addEventListener('click', decAct)
@@ -48,7 +48,6 @@ function decAct(e){
     if (!value.includes('.')){
         value += e.target.textContent;
         display.textContent = value;
-        console.log(value)
       } else if (value.includes('.')){
           value = value;
       }
@@ -71,7 +70,6 @@ equals.addEventListener('click', runCalc);
 
 function calc(op) {
         operator = output[output.indexOf(op)];
-        console.log(output.indexOf(op))
         num1 = output[output.indexOf(op) - 1];
         num2 = output[output.indexOf(op) + 1];
         result = operate(operator, num1, num2);
@@ -80,7 +78,7 @@ function calc(op) {
 
 function runCalc() {
     output.push(Number(value));
-    console.log(output)
+    
   
   for (var i = 1; i <= opArr.length; i++){
     if (output.includes('*')) {
@@ -103,10 +101,41 @@ backspace.addEventListener('click', backAct)
 
 function backAct(){
     var backArr = value.split('')
-    console.log(backArr)
     backArr.pop();
     value = backArr.join('');
     display.textContent = value;
+}
+
+
+
+document.addEventListener('keypress', pressKeys)
+
+function pressKeys(keyEvent){
+    var pressedKey = keyEvent.key;
+
+    if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(pressedKey)){
+        value += pressedKey;
+        display.textContent = value;
+    } else if (['.'].includes(pressedKey)){
+       if (!value.includes('.')){
+        value += pressedKey;
+        display.textContent = value;
+       } else if (value.includes('.')){
+          value = value;
+        }
+    } else if (['%', '/', '*', '-', '+'].includes(pressedKey)){
+        output.push(Number(value));
+        operator = pressedKey;
+        output.push(operator);
+        opArr.push(operator);
+        value = '';
+    } else if (['=', 'Enter'].includes(pressedKey)){
+        runCalc();
+    } else if (['c', 'C'].includes(pressedKey)){
+        clearAct();
+    } else if (keyEvent.keyCode === '8', '46'){
+        backAct();
+    } 
 }
 
 clear.addEventListener('click', clearAct)
